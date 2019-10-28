@@ -1,4 +1,6 @@
 package com.example.demo;
 
-public class UniversityClient {
+import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
+
+public class UniversityClient extends WebServiceGatewaySupport {
 }
