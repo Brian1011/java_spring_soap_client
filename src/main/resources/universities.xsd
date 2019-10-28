@@ -1,0 +1,95 @@
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema" xmlns:tns = "http://localhost:7991/universities"
+           targetNamespace = "http://localhost:7991/universities" elementFormDefault = "qualified">
+
+    <!--The original -->
+    <xs:element name="getUniversityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUniversityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="university" type="tns:university"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--get university by name-->
+    <xs:element name="getUniversityByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUniversityByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="university" type="tns:university"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--get university by location-->
+    <xs:element name="getUniversityByLocationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="location" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUniversityByLocationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="university" type="tns:university"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--get all universities-->
+    <xs:element name="getAllUniversitiesRequest">
+        <xs:complexType>
+            <xs:sequence></xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllUniversitiesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="university" type="tns:university"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--get university by location-->
+    <xs:element name="getUniversityByYearFoundedRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="yearFounded" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUniversityByYearFoundedResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="university" type="tns:university"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="university">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="location" type="xs:string"/>
+            <xs:element name="yearFounded" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
