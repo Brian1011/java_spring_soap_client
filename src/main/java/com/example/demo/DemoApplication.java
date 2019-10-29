@@ -10,7 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -36,7 +39,6 @@ public class DemoApplication {
                     + " Year Founded: "+response.getUniversity().getYearFounded()
             );
 
-
             // get university by location
             String location = "Juja";
 
@@ -54,13 +56,20 @@ public class DemoApplication {
             // get all universities
             GetAllUniversitiesResponse response2 = quoteClient.getAllUniversitiesResponse();
             System.err.println("############### ALL UNIVERSITIES ##################");
-            System.err.println(response2.getUniversity());
-            List<University> universities = response2.getUniversity();
-            for (University university: universities){
+            //System.err.println(response2.getUniversity());
+
+            // get university as a list
+            List<University> universitiesList = response2.getUniversity();
+
+            int count = 0;
+            for (University university: universitiesList){
+                if(count == 3)
+                    break;
                 System.err.println("University Name: "+university.getName()
                         + " Location: "+university.getLocation()
                         + " Year Founded: "+university.getYearFounded()
                 );
+                count = count + 1;
             }
         };
     }
