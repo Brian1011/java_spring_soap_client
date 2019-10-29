@@ -3,10 +3,14 @@ package com.example.demo;
 import hello.wsdl.GetAllUniversitiesResponse;
 import hello.wsdl.GetUniversityByLocationResponse;
 import hello.wsdl.GetUniversityResponse;
+import hello.wsdl.University;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -47,6 +51,17 @@ public class DemoApplication {
                     + " Year Founded: "+response1.getUniversity().getYearFounded()
             );
 
+            // get all universities
+            GetAllUniversitiesResponse response2 = quoteClient.getAllUniversitiesResponse();
+            System.err.println("############### ALL UNIVERSITIES ##################");
+            System.err.println(response2.getUniversity());
+            List<University> universities = response2.getUniversity();
+            for (University university: universities){
+                System.err.println("University Name: "+university.getName()
+                        + " Location: "+university.getLocation()
+                        + " Year Founded: "+university.getYearFounded()
+                );
+            }
         };
     }
 
